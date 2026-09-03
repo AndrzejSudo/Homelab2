@@ -1,28 +1,28 @@
 # Configuration of cloudflare tunnel running on lxc container
 
-## Download and install official cloudflare tunnel client:
+### Download and install official cloudflare tunnel client:
 wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 sudo apt install ./cloudflared-linux-amd64.deb
 
-## Auth with cloudflare account (store creds in /root/.cloudflared/):
+### Auth with cloudflare account (store creds in /root/.cloudflared/):
 cloudflared tunnel login
 
-## Create tunnel (id and json cred file):
+### Create tunnel (id and json cred file):
 cloudflared tunnel create <tunnel-name>
 
-## Create config file:
+### Create config file:
 nano /root/.cloudflared/tunnel-config.yml
 
-## Add DNS route:
+### Add DNS route:
 cloudflared tunnel route dns <tunnel-name> <domain.pl>
 
-## Run tunnel:
+### Run tunnel:
 cloudflared tunnel run <tunnel-name)
 
-## Make cloudflared run as a service:
+### Make cloudflared run as a service:
 sudo systemctl enable cloudflared
 sudo systemctl start cloudflared
 
-## Check connectivity
+### Check connectivity
 cloudflared tunnel list
 

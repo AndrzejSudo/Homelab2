@@ -1,10 +1,10 @@
 # Configuration of cloudflare tunnel running on lxc container
 
 ### Download and install official cloudflare tunnel client:
-```
+
 > wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 > sudo apt install ./cloudflared-linux-amd64.deb
-```
+
 ### Auth with cloudflare account (store creds in /root/.cloudflared/):
 ```
 cloudflared tunnel login

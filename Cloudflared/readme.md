@@ -30,5 +30,6 @@
 > curl -k <domain.com>
 > journalctl -u cloudflared -n 100 --no-pager
 
-### Different tunnels can run from same container, just need separate creds/config files and systemd service f.e: /etc/systemd/system/cloudflared2.service
-### Multiple tunnels can also use same credentials and config file, but better split them for redundancy and if they are using different domain
+
+Different tunnels can run from same container, just need separate creds/config files and systemd service f.e: /etc/systemd/system/cloudflared2.service
+Multiple tunnels can also use same credentials and config file, but better split them for redundancy and if they are using different domain

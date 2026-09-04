@@ -25,3 +25,5 @@
 
 ### Check connectivity
 > cloudflared tunnel list
+> ss -lnup | grep "cloudflared"
+

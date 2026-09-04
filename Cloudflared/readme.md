@@ -14,7 +14,7 @@
 > nano /root/.cloudflared/tunnel-config.yml
 
 ### Add DNS route:
-> cloudflared tunnel route dns <tunnel-name> <domain.pl>
+> cloudflared tunnel route dns <tunnel-name> <domain.com>
 
 ### Run tunnel:
 > cloudflared tunnel run <tunnel-name)
@@ -25,5 +25,10 @@
 
 ### Check connectivity
 > cloudflared tunnel list
+> ps aux | grep "cloudflared"
 > ss -lnup | grep "cloudflared"
+> curl -k <domain.com>
+> journalctl -u cloudflared -n 100 --no-pager
 
+### Different tunnels can run from same container, just need separate creds/config files and systemd service f.e: /etc/systemd/system/cloudflared2.service
+### Multiple tunnels can also use same credentials and config file, but better split them for redundancy and if they are using different domain

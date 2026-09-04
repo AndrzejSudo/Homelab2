@@ -1,0 +1,31 @@
+tunnel: <id>
+credentials-file: /root/.cloudflared/<id>.json
+
+ingress:
+  - hostname: andrzej.site
+    service: http://192.168.30.3:80
+    originRequest:
+#      noTLSVerify: true
+#      http2Origin: false
+      httpHostHeader: andrzej.site
+#      originServerName: pve3.local
+#      disableChunkedEncoding: true
+#      connectTimeout: 30s
+#      tlsTimeout: 30s
+#      keepAliveConnections: 100
+#      keepAliveTimeout: 60s
+#  - service: http_status:404
+
+  - hostname: lab.andrzej.site
+    service: https://192.168.1.103:8006
+    originRequest:
+      noTLSVerify: true
+      httpHostHeader: lab.andrzej.site
+
+  - hostname: jumper.andrzej.site
+    service: http://192.168.10.6:80
+    originRequest:
+#      noTLSVerify: true
+      httpHostHeader: jumper.andrzej.site
+
+  - service: http_status:404

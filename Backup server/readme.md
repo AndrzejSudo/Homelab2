@@ -52,14 +52,22 @@
 > showmount -e <backup_server_ip>
 
 ### Then create backup directory and mount it
-> mkdir /mnt/backups-for-pi
-> mount -t nfs <backup_server_ip>:/srv/proxmox-backup /mnt/backups-for-pi
-> df -h /mnt/backups-for-pi
+> mkdir /mnt/pi-backups
+> mount -t nfs <backup_server_ip>:/srv/proxmox-backup /mnt/pi-backups
+> df -h /mnt/pi-backups
 
 ### In Proxmox VE, add Pi storage to datacenter
 > Datacenter -> Storage -> Add -> NFS
 > export: /srv/proxmox-backup
 > content: Backup
 
+### On host, add backup scripts to /etc/systemd/system/
+> systemctl daemon-reload
+> systemctl enable --now pve-host-backup.service
+> systemctl enable --now pve-host-backup.timer
+> systemctl start pve-host-backup.timer
+
 ### It should work now, so you can set up backup jobs
 > Datacenter -> Backup -> Add
+
+

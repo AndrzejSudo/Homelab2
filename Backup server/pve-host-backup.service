@@ -1,0 +1,6 @@
+[Unit]
+Description=Proxmox host configuration backup
+
+[Service]
+Type=oneshot
+ExecStart=/scripts/backup-pve.sh

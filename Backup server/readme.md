@@ -27,15 +27,26 @@
 ### Install NFS server
 > sudo apt install nfs-kernel-server -y
 
-### Edit exports and add new for proxmox servers
+### Create group and user for backup directory (required for proper root squash)
+> sudo groupadd --system pvebackup
+> sudo useradd --system --no-create-home -gid pvebackup pvebackup
+
+### Grab UID/GID for backup user/group
+> id pvebackup
+
+### Edit exports, add new line for proxmox servers, add previous UID/GID as 'anonuid' and 'anongid'
 > sudo nano /etc/exports
 > /srv/pve-backups <host1_ip>(rw,sync,no_subtree_check,all_squash,anonuid=999,anongid=985) <host2_ip>(rw,sync,no_subtree_check,all_squash,anonuid=999,anongid=985
-> sudo exportfs -ra
+> sudo exportfs -ra && sudo exportfs -v
 
 ### Set up permissions and verify
-> sudo chown root:root /srv/proxmox-backup
-> sudo chmod 755 /srv/proxmox-backup
+> sudo chown -R pvebackup:pvebackup /srv/proxmox-backup
+> sudo chmod 770 /srv/proxmox-backup
 > ls -ld /srv/proxmox-backup
+
+### Install tools to monitor hdd health
+> sudo apt install smartmontools -y
+> sudo smartctl -a /dev/sda
 
 ### On proxmox host, check NFS share
 > showmount -e <backup_server_ip>

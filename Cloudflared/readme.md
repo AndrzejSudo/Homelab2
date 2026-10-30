@@ -22,6 +22,7 @@
 
 ### Make cloudflared run as a service:
 > sudo systemctl enable cloudflared
+> 
 > sudo systemctl start cloudflared
 
 ### Check connectivity

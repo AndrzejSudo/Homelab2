@@ -15,7 +15,7 @@
 > nano /root/.cloudflared/tunnel-config.yml
 
 ### Add DNS route:
-> cloudflared tunnel route dns <tunnel-name> <domain.com>
+> cloudflared tunnel route dns <tunnel-name> <hostname>
 
 ### Run tunnel:
 > cloudflared tunnel run <tunnel-name)

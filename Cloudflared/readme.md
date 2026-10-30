@@ -27,9 +27,13 @@
 
 ### Check connectivity
 > cloudflared tunnel list
+> 
 > ps aux | grep "cloudflared"
+> 
 > ss -lnup | grep "cloudflared"
-> curl -k <domain.com>
+> 
+> curl -k <hostname>
+
 > journalctl -u cloudflared -n 100 --no-pager
 
 
